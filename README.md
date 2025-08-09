@@ -53,7 +53,9 @@ The script is designed to produce georeferenced flood and water masks, calculate
 ---
 
 ## 📊 Methodology Flowchart
-![Methodology Flowchart]("C:\GalaxEye\outputs_2\Methodology_flowchart.png")
+![Methodology_Flowchart]("image/Methodology_flowchart.png")
 
 ## 🛰️ Sample Flood Mapping Result
-![Flood Mapping Result](images/flood_result.png)
+![Pre_Flood_Event](images/Pre_flood_event.png)
+![Post_Flood_Event](images/Post_flood_event.png)
+![Zone_classification_result](images/Zone_classification.png)
