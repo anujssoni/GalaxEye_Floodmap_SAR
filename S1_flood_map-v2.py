@@ -351,6 +351,19 @@ def main():
     save_uint8_mask(combined, meta, combined_path)
     print("Saved combined classified raster:", combined_path)
 
+ # False positives zone annotation
+    false_positives = flood_clean & water_clean  # Overlap between flood and permanent water
+
+    # Save as separate mask
+    false_pos_path = os.path.join(OUTPUT_DIR, "false_positive_mask.tif")
+    save_uint8_mask(false_positives, meta, false_pos_path)
+
+    # Visualization
+    plt.imshow(flood_clean, cmap='YlOrRd', alpha=0.6)
+    plt.imshow(false_positives, cmap='cool', alpha=0.5)  # Highlight false positives
+    plt.title("Flood Mask with False Positives Highlighted")
+    plt.show()
+    
     # quick plot
     plt.figure(figsize=(12,6))
     plt.subplot(1,3,1); plt.title("Pre VH (dB)"); plt.imshow(pre_filt_db, vmin=-30, vmax=0); plt.colorbar()
@@ -364,3 +377,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
