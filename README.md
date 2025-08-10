@@ -59,3 +59,26 @@ The script is designed to produce georeferenced flood and water masks, calculate
 ![Pre_Flood_Event](images/Pre_flood_event.png)
 ![Post_Flood_Event](images/Post_flood_event.png)
 ![Zone_classification_result](images/Zone_classification.png)
+
+---
+
+## 🚫 False Positives Zone Annotation
+
+In flood mapping using SAR data, **false positives** occur when areas are wrongly classified as flooded.  
+Common reasons include:
+
+- **Permanent water bodies** like rivers or lakes being detected as flood due to similar backscatter values.
+- **Radar artifacts** such as layover and shadow in steep terrain.
+- Seasonal changes in water bodies between pre- and post-flood acquisitions.
+
+### Approach Used in This Project
+To minimize false positives, a **pseudo-permanent water mask** was generated from the **pre-flood SAR (VH band)** using a threshold (`-20 dB`).  
+Any flood-detected pixels overlapping this mask were reclassified as **false positives** and removed from the final flood layer.
+
+The classification scheme in the final output is: 
+- **Blue** → Image background  
+- **Gray** → False Positive Zones
+
+### False Postitives Output
+![False Positive Zone Example](images/False_positives_Annotation.png)
+
